@@ -62,6 +62,13 @@ app.put('/campgrounds/:id', async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`)
 })
 
+// delete a campground
+app.delete('/campground/:id', async (req, res) => {
+    const {id} = req.params;
+    await Campground.findByIdAndDelete(id);
+    res.redirect('/campgrounds');
+})
+
 // Testing whether a new document is created
 // app.get('/makecampground', async (req, res) => {
 //     const camp = new Campground({ title: 'My Backyard', description: 'cheap camping'});
